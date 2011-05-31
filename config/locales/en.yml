@@ -1,0 +1,21 @@
+en:
+  plugins:
+    refinerycms_copywriting:
+      title: Copywriting
+  admin:
+    copywriting_phrases:
+      locale_filters:
+        change_language: Change language
+      scope_filters:
+        filter_by_scope: Filter by scope
+        filtered_by: "Filtered by '%{filter_scope}'"
+        clear_scope_filter: Clear
+      records:
+        no_items_yet: There are no Phrase yet.
+      phrase:
+        edit: Edit this phrase
+        delete: Remove this phrase
+    pages:
+      tabs:
+        copywriting:
+          no_copywriting_yet: No copywriting for this page

@@ -1,0 +1,10 @@
+Gem::Specification.new do |s|
+  s.platform          = Gem::Platform::RUBY
+  s.name              = 'refinerycms-copywriting'
+  s.version           = '1.0'
+  s.date              = '2011-05-30'
+  s.description       = 'Copywriting engine for Refinery CMS'
+  s.summary           = 'Refinery CMS engine to manage copywriting, application wide or per pages, with i18n.'
+  s.require_paths     = %w(lib)
+  s.files             = Dir['lib/**/*', 'config/**/*', 'app/**/*', 'db/**/*', 'spec/**/*', 'features/**/*']
+end

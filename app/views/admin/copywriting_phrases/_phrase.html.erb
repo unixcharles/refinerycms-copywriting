@@ -1,0 +1,20 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(phrase) -%>">
+  <span class='title'>
+    <% if @scope.nil? and phrase.scope %>
+      <%= link_to phrase.scope.capitalize, params.dup.tap { |p| p[:filter_scope] = phrase.scope } %>
+    <% end %>
+    <b><%= phrase.name %></b>
+    <span class="preview">- <%= truncate(phrase.default_or_value, :length => 40) %></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_copywriting_phrase_path(phrase, :dialog => true),
+         :title => t('.edit') %>
+
+    <%= link_to refinery_icon_tag("delete.png"), admin_copywriting_phrase_path(phrase),
+         :title => t('.delete'),
+         :class => "cancel confirm-delete",
+         :confirm => t('message', :scope => 'shared.admin.delete', :title => phrase.name.capitalize),
+         :method => :delete %>
+
+  </span>
+</li>

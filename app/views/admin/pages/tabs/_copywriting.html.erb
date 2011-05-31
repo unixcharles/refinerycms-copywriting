@@ -1,0 +1,25 @@
+<% copywriting_phrases = @page.copywriting_phrases %>
+<% if copywriting_phrases and copywriting_phrases.any? %>
+  <div class='wym_skin_refinery page_part' id='copywritting-tab'>
+    <ul>
+      <% copywriting_phrases.each do |phrase| %>
+        <li>
+          <% f.fields_for :copywriting_phrases, phrase do |p|%>
+          <div class='field'>
+            <%= p.label :value, p.object.name.capitalize -%>
+            <%= p.text_field :value, :class => 'widest' -%>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <div class='wym_skin_refinery page_part' id='copywritting-tab'>
+    <p><%= t('.no_copywriting_yet') %></p>
+  </div>
+<% end %>
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'refinerycms-copywritting-tab' %>
+<% end %>
