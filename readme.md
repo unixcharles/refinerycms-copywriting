@@ -2,8 +2,8 @@
 
 __How do you manage your string in RefineryCMS?__
 
-Extended copywriting management: extract all your string and leave no
-human word behind. + i18n
+Extended copywriting management: extract all your strings and leave no
+human word behind + i18n.
 
 Do like this
 
@@ -54,6 +54,6 @@ Yes.
     {
       :default => 'string...', # if no block is given
       :html_safe => true,      # it escape html by default
-      :page => @page,          # string will be scoped to the page
-      :page_id => 1,           # using i instead, if no page option is provided
+      :page => @page,          # the string will be scoped to the page, if no page_id option is provided
+      :page_id => 1            # using integer instead of page object
     }
