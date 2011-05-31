@@ -11,7 +11,7 @@ class CreateCopywritings < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :copywriting_phrases, :name, :scope
+    add_index :copywriting_phrases, [:name, :scope]
 
     load(Rails.root.join('db', 'seeds', 'copywritings.rb'))
   end
