@@ -43,14 +43,17 @@ Pass the `@page` object in the options hash:
     rails generate refinerycms_copywriting
     rake db:migrate
 
+## Pull request?
+
+Yes.
 
 ## Helper method
 
     copywriting('name', options) { ... optional block ... }
 
     {
-      :default => 'string...', # if no block is provider
+      :default => 'string...', # if no block is given
       :html_safe => true,      # it escape html by default
       :page => @page,          # string will be scoped to the page
-      :page_id => 1,           # if no page id is provided
+      :page_id => 1,           # using i instead, if no page option is provided
     }
