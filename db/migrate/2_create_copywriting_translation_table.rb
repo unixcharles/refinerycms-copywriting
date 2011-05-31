@@ -6,7 +6,6 @@ class CreateCopywritingTranslationTable < ActiveRecord::Migration
       }, {
         :migrate_data => true
       })
-    end
   end
 
   def self.down
