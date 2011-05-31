@@ -5,6 +5,9 @@ Gem::Specification.new do |s|
   s.date              = '2011-05-30'
   s.description       = 'Copywriting engine for Refinery CMS'
   s.summary           = 'Refinery CMS engine to manage copywriting, application wide or per pages, with i18n.'
+  s.author            = 'Charles Barbier'
+  s.email             = 'unixcharles@gmail.com'
+  s.homepage          = 'http://github.com/unixcharles/refinerycms-copywriting'
   s.require_paths     = %w(lib)
   s.files             = Dir['lib/**/*', 'config/**/*', 'app/**/*', 'db/**/*', 'spec/**/*', 'features/**/*']
 end
