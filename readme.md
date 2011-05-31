@@ -1,18 +1,21 @@
-# Copywriting engine for Refinery CMS.
+# Copywriting engine for Refinery CMS
 
 __How do you manage your string in RefineryCMS?__
 
-Just do it like this:
+Extended copywriting management: extract all your string and leave no
+human word behind. + i18n
+
+Do like this
 
     <%= copywriting('phone number', { :scope => 'header', :default => '1-800-888-5555' }) %>
 
-Or like that:
+Or like that
 
     <%= copywriting('slogan', { :scope => 'header'}) do %>
       Insert a slogan here
     <% end %>
 
-just give it a name anyway:
+Just give it a name anyway
 
     <%= copywriting('note1') %>
 
@@ -22,7 +25,7 @@ Then edit the copywriting from the backend:
 
 __Okay, but now, what if you want to have a string that change on every page, like a slogan?__
 
-Pass the @page object in the options hash:
+Pass the `@page` object in the options hash:
 
     <%= copywriting('slogan', { :scope => 'header', :page => @page }) do %>
       Insert a slogan here
@@ -32,22 +35,22 @@ Pass the @page object in the options hash:
 
 ## Install
 
-  # Gemfile
-  gem 'refinerycms-copywriting'
+    # Gemfile
+    gem 'refinerycms-copywriting'
 
 
-  bundle
-  rails generate refinerycms_copywriting
-  rake db:migrate
+    bundle
+    rails generate refinerycms_copywriting
+    rake db:migrate
 
 
 ## Helper method
 
-  copywriting('name', options) { ... optional block ... }
+    copywriting('name', options) { ... optional block ... }
 
-  {
-    :default => 'string...', # if no block is provider
-    :html_safe => true,      # it escape html by default
-    :page => @page,          # string will be scoped to the page
-    :page_id => 1,           # if no page id is provided
-  }
+    {
+      :default => 'string...', # if no block is provider
+      :html_safe => true,      # it escape html by default
+      :page => @page,          # string will be scoped to the page
+      :page_id => 1,           # if no page id is provided
+    }
