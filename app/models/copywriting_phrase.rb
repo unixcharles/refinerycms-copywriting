@@ -1,6 +1,4 @@
 class CopywritingPhrase < ActiveRecord::Base
-  acts_as_indexed :fields => [:name, :default]
-
   belongs_to :page
 
   translates :value if self.respond_to?(:translates)
