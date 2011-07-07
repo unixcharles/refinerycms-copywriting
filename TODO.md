@@ -2,7 +2,6 @@
 
 ## tests
 
-- Spec CopywritingHelper#copywriting
 - Cuke pages/tabs/copywriting
 - Cuke locale filter
 - Cuke scope filter
