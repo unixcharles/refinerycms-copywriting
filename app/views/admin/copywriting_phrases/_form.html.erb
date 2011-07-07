@@ -5,11 +5,8 @@
           :object => @copywriting_phrase,
           :include_object_name => true
         } %>
-  
-  <div class='field'>
-    <%= f.label :value, f.object.name.capitalize -%>
-    <%= f.text_area :value, :rows => 12, :class => 'widest' -%>
-  </div>
+
+  <%= render :partial => '/admin/shared/copywriting_phrases/value_field', :locals => {:f => f} %>
 
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
