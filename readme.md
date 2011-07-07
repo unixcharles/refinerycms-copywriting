@@ -54,5 +54,5 @@ Yes.
       :default => 'string...',        # if no block is given
       :page => @page,                 # the string will be scoped to the page, if no page_id option is provided
       :page_id => 1                   # using integer instead of page object
-      :phrase_type => "wysiwyg"       # default is "text". Sets the type of field this is when editing. "string" gives you a single line text field. "text" gives you a multiline textarea. "wysiwyg" gives you the default Refinery visual editor. Remember to set :html_safe => true when using this option.
+      :phrase_type => "wysiwyg"       # default is "text". Sets the type of field this is when editing. "string" gives you a single line text field. "text" gives you a multiline textarea. "wysiwyg" gives you the default Refinery visual editor.
     }
