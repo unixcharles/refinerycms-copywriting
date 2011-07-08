@@ -14,7 +14,6 @@ class CopywritingPhrase < ActiveRecord::Base
       phrase = self.create(:name => name,
                            :scope => options[:scope],
                            :default => options[:default],
-                           :value => options[:value],
                            :page_id => (options[:page].try(:id) || options[:page_id] || nil),
                            :phrase_type => options[:phrase_type])
     end

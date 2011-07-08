@@ -1,11 +1,12 @@
 <div class='field'>
   <%= f.label :value, f.object.name.capitalize -%>
+  <% value = f.object.default_or_value %>
   <% case f.object.phrase_type %>
   <% when "text" %>
-    <%= f.text_area :value, :rows => 12, :class => 'widest' -%>
+    <%= f.text_area :value, :value => value, :rows => 12, :class => 'widest' -%>
   <% when "wysiwyg" %>
-    <%= f.text_area :value, :rows => 5, :class => 'widest wymeditor' -%>
+    <%= f.text_area :value, :value => value, :rows => 5, :class => 'widest wymeditor' -%>
   <% else %>
-    <%= f.text_field :value, :class => 'widest larger' -%>
+    <%= f.text_field :value, :value => value, :class => 'widest larger' -%>
   <% end %>
 </div>
