@@ -24,7 +24,32 @@ describe CopywritingHelper do
       
       copywriting("test block").should == block_text
     end
-    
+
+    it "it should allow you to set default options with copywriting_options block" do
+      copywriting_options({:scope => 'default_scope'}) do
+        copywriting("test with default scope")
+      end
+
+      CopywritingPhrase.where(:name => "test with default scope").scope.should == 'default_scope'
+    end
+
+    it "it should allow you to overwrite the default options set with copywriting_options block" do
+      copywriting_options({:scope => 'default_scope'}) do
+        copywriting("test without default scope", {:scope => 'without_default_scope'})
+      end
+
+      CopywritingPhrase.where(:name => "test without default scope").scope.should == 'without_default_scope'
+    end
+
+    it "it should clear the default options after copywriting_options block" do
+      copywriting_options({:scope => 'default_scope'}) do
+        copywriting("test with default scope")
+      end
+      copywriting("test outside default scope")
+
+      CopywritingPhrase.where(:name => "test outside default scope").scope.should_not == 'default_scope'
+    end
+
   end
   
 end
