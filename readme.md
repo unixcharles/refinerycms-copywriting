@@ -9,15 +9,25 @@ Do like this
 
     <%= copywriting('phone number', { :scope => 'header', :default => '1-800-888-5555' }) %>
 
-Or like that
+Or using block
 
-    <%= copywriting('slogan', { :scope => 'header'}) do %>
+    <%= copywriting('slogan', { :scope => 'header' }) do %>
       Insert a slogan here
     <% end %>
 
 Just give it a name anyway
 
     <%= copywriting('note1') %>
+
+When it get more complex, avoid redundant options hash with options block
+
+    <% copywriting_options({ :scope => 'header', :phrase_type => 'wysiwyg' }) do %>
+      ...
+      <%= copywriting('slogan', { :default => 'slogan' }) do %>
+      ...
+      <%= copywriting('phone number', { :phrase_type => 'string', :default => '1-800-888-5555' }) %>
+      ...
+    <% end %>
 
 Then edit the copywriting from the backend:
 
@@ -56,3 +66,5 @@ Yes.
       :page_id => 1                   # using integer instead of page object
       :phrase_type => "wysiwyg"       # default is "text". Sets the type of field this is when editing. "string" gives you a single line text field. "text" gives you a multiline textarea. "wysiwyg" gives you the default Refinery visual editor.
     }
+
+    copywriting_options(options) { ... use copywriting helper with default options hash ... }
