@@ -14,6 +14,7 @@ class CopywritingPhrase < ActiveRecord::Base
     if (phrase = self.where(:name => name, :page_id => page_id).first).nil?
       phrase = self.create(:name => name,
                            :scope => options[:scope],
+                           :value => options[:value],
                            :default => options[:default],
                            :page_id => page_id,
                            :phrase_type => options[:phrase_type])
