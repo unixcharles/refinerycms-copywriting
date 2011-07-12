@@ -23,7 +23,9 @@ When it get more complex, avoid redundant options hash with options block
 
     <% copywriting_options({ :scope => 'header', :phrase_type => 'wysiwyg' }) do %>
       ...
-      <%= copywriting('slogan', { :default => 'slogan' }) do %>
+      <%= copywriting('contact information' }).html_safe do %>
+        ...
+      <% end %>
       ...
       <%= copywriting('phone number', { :phrase_type => 'string', :default => '1-800-888-5555' }) %>
       ...
@@ -62,7 +64,6 @@ Yes.
 
     {
       :default => 'string...',        # if no block is given
-      :html_safe => true,             # it escape html by default
       :page => @page,                 # the string will be scoped to the page, if no page_id option is provided
       :page_id => 1                   # using integer instead of page object
       :phrase_type => "wysiwyg"       # default is "text". Sets the type of field this is when editing. "string" gives you a single line text field. "text" gives you a multiline textarea. "wysiwyg" gives you the default Refinery visual editor.
