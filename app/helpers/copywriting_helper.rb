@@ -9,7 +9,7 @@ module CopywritingHelper
 
   def copywriting_options(options, &block)
     old_options = @copywriting_options
-    @copywriting_options = options
+    @copywriting_options = @copywriting_options ? options : @copywriting_options.merge(options)
     yield
     @copywriting_options = old_options
   end
