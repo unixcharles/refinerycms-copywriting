@@ -8,8 +8,9 @@ module CopywritingHelper
   end
 
   def copywriting_options(options, &block)
+    old_options = @copywriting_options
     @copywriting_options = options
     yield
-    @copywriting_options = nil
+    @copywriting_options = old_options
   end
 end
