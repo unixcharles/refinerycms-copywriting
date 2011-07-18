@@ -1,0 +1,21 @@
+bg:
+  plugins:
+    refinerycms_copywriting:
+      title: Копирайтинг
+  admin:
+    copywriting_phrases:
+      locale_filters:
+        change_language: Смяна на език
+      scope_filters:
+        filter_by_scope: Филтриране по обхват
+        filtered_by: "Филтрирано по '%{filter_scope}'"
+        clear_scope_filter: Изчистване
+      records:
+        no_items_yet: Все още няма фрази.
+      phrase:
+        edit: Редактиране на тази фраза
+        delete: Изтриване на тази фраза
+    pages:
+      tabs:
+        copywriting:
+          no_copywriting_yet: За тази страница няма копирайтинг
