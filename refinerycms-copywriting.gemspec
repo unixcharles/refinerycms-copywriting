@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-copywriting'
-  s.version           = '1.0.8'
-  s.date              = '2011-07-11'
+  s.version           = '1.0.9'
+  s.date              = '2011-07-20'
   s.description       = 'Extract all your strings and leave no human word behind, with i18n'
   s.summary           = 'Refinery CMS engine to manage copywriting, application wide or per pages, with i18n.'
   s.author            = ['Charles Barbier', 'David Jones']
