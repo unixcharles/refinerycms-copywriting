@@ -2,7 +2,7 @@ class CreateCopywritingTranslationTable < ActiveRecord::Migration
 
   def self.up
     ::CopywritingPhrase.create_translation_table!({
-        :value => :string
+        :value => :text
       }, {
         :migrate_data => true
       })
