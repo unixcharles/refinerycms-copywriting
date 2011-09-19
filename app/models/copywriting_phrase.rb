@@ -6,6 +6,12 @@ class CopywritingPhrase < ActiveRecord::Base
 
   attr_accessible :locale, :name, :default, :value, :scope, :page_id, :phrase_type
 
+  if defined?(::CopywritingPhrase::Translation)
+    ::CopywritingPhrase::Translation.module_eval do
+      attr_accessible :locale
+    end
+  end
+  
   def self.for(name, options = {})
     options = {:phrase_type => 'text', :scope => 'default'}.merge(options)
     name = name.to_s
