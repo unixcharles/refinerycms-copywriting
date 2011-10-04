@@ -1,0 +1,21 @@
+cs:
+  plugins:
+    refinerycms_copywriting:
+      title: Copywriting
+  admin:
+    copywriting_phrases:
+      locale_filters:
+        change_language: Změnit jazyk
+      scope_filters:
+        filter_by_scope: Třídit podle umístění
+        filtered_by: "Třízeno podle '%{filter_scope}'"
+        clear_scope_filter: Zrušit
+      records:
+        no_items_yet: Žádné fráze
+      phrase:
+        edit: Upravit tuto frázi
+        delete: Odstranit tuto frázi
+    pages:
+      tabs:
+        copywriting:
+          no_copywriting_yet: Žádné fráze pro tuto stránku
