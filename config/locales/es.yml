@@ -1,20 +1,22 @@
 es:
-  plugins:
-    refinerycms_copywriting:
-      title: Redacción
-  admin:
-    copywriting_phrases:
-      locale_filters:
-        change_language: Cambiar Lenguaje
-      scope_filters:
-        filter_by_scope: Filtrar por alcanze
-        filtered_by: "Filtrar por '%{filter_scope}'"
-        clear_scope_filter: Clear
-      records:
-        no_items_yet: Todavía no hay frases.
-      phrase:
-        edit: Editar esta frase.
-        delete: Borrar esta frase.
+  refinery:
+    plugins:
+      refinerycms_copywriting:
+        title: Redacción
+    copywriting:
+      admin:
+        phrases:
+          locale_filters:
+            change_language: Cambiar Lenguaje
+          scope_filters:
+            filter_by_scope: Filtrar por alcanze
+            filtered_by: "Filtrar por '%{filter_scope}'"
+            clear_scope_filter: Clear
+          records:
+            no_items_yet: Todavía no hay frases.
+          phrase:
+            edit: Editar esta frase.
+            delete: Borrar esta frase.
     pages:
       tabs:
         copywriting:

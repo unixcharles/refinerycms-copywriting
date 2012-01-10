@@ -4,7 +4,7 @@ module CopywritingHelper
     options = @copywriting_options.merge(options) if @copywriting_options
     options[:default] = block_given? ? capture(&block) : options[:default]
 
-    result = ::CopywritingPhrase.for(name, options)
+    result = ::Refinery::Copywriting::Phrase.for(name, options)
   end
 
   def copywriting_options(options, &block)

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe CopywritingPhrase do
+describe Refinery::Copywriting::Phrase do
 
   context "validations" do
     
     it "rejects empty name" do
-      copy = CopywritingPhrase.new
+      copy = Refinery::Copywriting::Phrase.new
       copy.save.should be_false
     end
     
@@ -14,27 +14,27 @@ describe CopywritingPhrase do
   context "for" do
 
     it "should return the default string if value is not set" do
-      CopywritingPhrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'default'
+      Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'default'
     end
 
     it "should not duplicate copywriting phrases" do
-      2.times { CopywritingPhrase.for('name', {:scope => 'scope', :default => 'default'}) }
-      CopywritingPhrase.where(:name => 'name').count.should == 1
+      2.times { Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}) }
+      Refinery::Copywriting::Phrase.where(:name => 'name').count.should == 1
     end
 
     it "should return the string the value once its set" do
-      CopywritingPhrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'default'
-      copy = CopywritingPhrase.where(:name => 'name').first
+      Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'default'
+      copy = Refinery::Copywriting::Phrase.where(:name => 'name').first
       copy.value = 'updated!'
       copy.save
 
-      CopywritingPhrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'updated!'
+      Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'updated!'
     end
     
     it "should save options" do
-      CopywritingPhrase.for('name', {:scope => 'scope', :default => 'default', :phrase_type => 'wysiwyg'})
+      Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default', :phrase_type => 'wysiwyg'})
 
-      phrase = CopywritingPhrase.where(:name => 'name').first
+      phrase = Refinery::Copywriting::Phrase.where(:name => 'name').first
 
       phrase.name.should == "name"
       phrase.phrase_type.should == "wysiwyg"
@@ -45,8 +45,8 @@ describe CopywritingPhrase do
     
     it "should have defaults options" do
       name = "test_defaults"
-      CopywritingPhrase.for(name)
-      phrase = CopywritingPhrase.where(:name => name).first
+      Refinery::Copywriting::Phrase.for(name)
+      phrase = Refinery::Copywriting::Phrase.where(:name => name).first
 
       phrase.name.should == name
       phrase.phrase_type.should == "text"
@@ -59,16 +59,16 @@ describe CopywritingPhrase do
       page = Page.create(:title => "test page")
 
       name = "test_page"
-      CopywritingPhrase.for(name, :page => page)
-      phrase = CopywritingPhrase.where(:name => name).first
+      Refinery::Copywriting::Phrase.for(name, :page => page)
+      phrase = Refinery::Copywriting::Phrase.where(:name => name).first
       
       phrase.page_id.should == page.id
     end
 
     it "should allow you to scope to a page_id" do
       name = "test_page_id"
-      CopywritingPhrase.for(name, :page_id => 22)
-      phrase = CopywritingPhrase.where(:name => name).first
+      Refinery::Copywriting::Phrase.for(name, :page_id => 22)
+      phrase = Refinery::Copywriting::Phrase.where(:name => name).first
       
       phrase.page_id.should == 22
     end
