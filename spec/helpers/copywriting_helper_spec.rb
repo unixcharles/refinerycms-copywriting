@@ -18,7 +18,7 @@ describe CopywritingHelper do
       
       result = copywriting("test block") { block_text }
       
-      pharse = CopywritingPhrase.where(:name => "test block").first
+      pharse = Refinery::Copywriting::Phrase.where(:name => "test block").first
       pharse.should_not be_nil
       pharse.default.should == block_text
       
@@ -30,7 +30,7 @@ describe CopywritingHelper do
         copywriting("test with default scope")
       end
 
-      CopywritingPhrase.where(:name => "test with default scope").scope.should == 'default_scope'
+      Refinery::Copywriting::Phrase.where(:name => "test with default scope").scope.should == 'default_scope'
     end
 
     it "it should allow you to overwrite the default options set with copywriting_options block" do
@@ -38,7 +38,7 @@ describe CopywritingHelper do
         copywriting("test without default scope", {:scope => 'without_default_scope'})
       end
 
-      CopywritingPhrase.where(:name => "test without default scope").scope.should == 'without_default_scope'
+      Refinery::Copywriting::Phrase.where(:name => "test without default scope").scope.should == 'without_default_scope'
     end
 
     it "it should clear the default options after copywriting_options block" do
@@ -47,7 +47,7 @@ describe CopywritingHelper do
       end
       copywriting("test outside default scope")
 
-      CopywritingPhrase.where(:name => "test outside default scope").scope.should_not == 'default_scope'
+      Refinery::Copywriting::Phrase.where(:name => "test outside default scope").scope.should_not == 'default_scope'
     end
 
   end

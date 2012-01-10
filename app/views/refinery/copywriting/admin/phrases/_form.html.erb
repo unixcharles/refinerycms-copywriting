@@ -1,0 +1,19 @@
+<%= form_for [main_app, :refinery_copywriting_admin, @phrase] do |f| -%>
+  <%= hidden_field_tag :switch_locale, @current_locale %>
+
+  <%= render :partial => "/refinery/admin/error_messages", :locals => {
+          :object => @phrase,
+          :include_object_name => true
+        } %>
+
+  <%= render :partial => '/refinery/copywriting/admin/phrases/value_field', :locals => {:f => f} %>
+
+  <%= render :partial => "/refinery/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'refinery.copywriting.admin.phrases.phrase'),
+                :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @phrase.name),
+                :delete_url => main_app.refinery_copywriting_admin_phrase_path(@phrase)
+              } %>
+<% end -%>
