@@ -13,7 +13,7 @@ en:
             filtered_by: "Filtered by '%{filter_scope}'"
             clear_scope_filter: Clear
           records:
-            no_items_yet: There are no Phrase yet.
+            no_items_yet: There are no copywriting phrases yet.
           phrase:
             edit: Edit this phrase
             delete: Remove this phrase
