@@ -64,7 +64,7 @@ gem 'refinerycms-copywriting'
 
 ```bash
 bundle
-rails generate refinerycms_copywriting
+rails generate refinery:copywriting
 rake db:migrate
 ```
 
