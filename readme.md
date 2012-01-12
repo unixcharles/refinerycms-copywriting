@@ -60,7 +60,9 @@ Pass the `@page` object in the options hash:
 ```ruby
 # Gemfile
 gem 'refinerycms-copywriting'
+```
 
+```bash
 bundle
 rails generate refinerycms_copywriting
 rake db:migrate
