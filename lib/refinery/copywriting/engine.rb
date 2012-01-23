@@ -29,7 +29,7 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinerycms_copywriting'
-          plugin.url = app.routes.url_helpers.refinery_copywriting_admin_phrases_path
+          plugin.url = {:controller => 'refinery/admin/copywriting'}
           plugin.menu_match = /copywriting/
           plugin.activity = {
             :class_name => 'Refinery::Copywriting::Phrase',
