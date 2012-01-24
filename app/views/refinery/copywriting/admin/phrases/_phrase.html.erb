@@ -7,7 +7,7 @@
     <span class="preview">- <%= truncate(phrase.default_or_value, :length => 40) %></span>
   </span>
   <span class='actions'>
-    <%= link_to refinery_icon_tag("application_edit.png"), main_app.edit_refinery_copywriting_admin_phrase_path(phrase, :dialog => true, :switch_locale => @current_locale),
+    <%= link_to refinery_icon_tag("application_edit.png"), main_app.edit_refinery_copywriting_admin_phrase_path(phrase, :dialog => true, :switch_locale => @current_locale, :height => 620),
          :title => t('.edit') %>
 
     <%= link_to refinery_icon_tag("delete.png"), main_app.refinery_copywriting_admin_phrase_path(phrase),
