@@ -17,7 +17,7 @@
 
   <% locales.sort_by{|key, value| value}.each do |locale, locale_title| %>
     <li>
-      <%= link_to locale_title, main_app.refinery_copywriting_admin_phrases_path(:switch_locale => locale),
+      <%= link_to locale_title, refinery.copywriting_admin_phrases_path(:switch_locale => locale),
                   :style => "background-image: url('/images/refinery/icons/flags/#{locale}.png');" %>
     </li>
   <% end %>
