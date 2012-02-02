@@ -6,7 +6,7 @@ module Refinery
 
         crudify :'refinery/copywriting/phrase', :searchable => false,
                 :title_attribute => 'name', :xhr_paging => true, :sortable => false,
-                :redirect_to_url => 'main_app.refinery_copywriting_admin_phrases_path'
+                :redirect_to_url => 'refinery.copywriting_admin_phrases_path'
 
         protected
 

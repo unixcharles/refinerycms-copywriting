@@ -5,12 +5,12 @@
   </li>
   <% if @scope %>
   <li>
-    <%= link_to t('.clear_scope_filter'), main_app.refinery_copywriting_admin_phrases_path %>
+    <%= link_to t('.clear_scope_filter'), refinery.copywriting_admin_phrases_path %>
   </li>
   <% end %>
   <% (@scopes - [@scope]).each do |s| %>
     <li class='<%= s == @scope ? 'selected' : 'closed' %>'>
-      <%= link_to s.capitalize, main_app.refinery_copywriting_admin_phrases_path(:filter_scope => s) %>
+      <%= link_to s.capitalize, refinery.copywriting_admin_phrases_path(:filter_scope => s) %>
     </li>
   <% end %>
 </ul>

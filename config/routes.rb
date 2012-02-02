@@ -1,7 +1,7 @@
-Rails.application.routes.draw do
-  scope(:path => 'refinery', :module => 'refinery', :as => 'refinery') do
-    scope(:as => 'copywriting', :path => 'copywriting', :module => 'copywriting') do
-      scope(:as => 'admin', :module => 'admin') do
+Refinery::Core::Engine.routes.draw do
+  namespace :copywriting, :path => '' do
+    namespace :admin, :path => 'refinery' do
+      scope :path => 'copywriting' do
         resources :phrases, :except => [:show, :new, :create] do
           collection do
             post :update_positions
