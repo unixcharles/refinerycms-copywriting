@@ -1,6 +1,6 @@
 <div class='pagination_container'>
   <% if @phrases.any? %>
-    <%= render :partial => 'copywriting_phrases', :copywriting_phrases => @phrases %>
+    <%= render 'phrases' %>
   <% else %>
     <p>
       <% unless searching? %>
