@@ -1,15 +1,15 @@
-<% if @phrases.any? %>
-  <div class='pagination_container'>
-    <%= render :partial => 'copywriting_phrases', :copywriting_phrases => @phrases %>
-  </div>
-<% else %>
-  <p>
-    <% unless searching? %>
-      <strong>
-        <%= t('.no_items_yet') %>
-      </strong>
-    <% else %>
-      <%= t('no_results', :scope => 'shared.admin.search') %>
-    <% end %>
-  </p>
-<% end %>
+<div class='pagination_container'>
+  <% if @phrases.any? %>
+    <%= render 'phrases' %>
+  <% else %>
+    <p>
+      <% unless searching? %>
+        <strong>
+          <%= t('.no_items_yet') %>
+        </strong>
+      <% else %>
+        <%= t('no_results', :scope => 'shared.admin.search') %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
