@@ -8,9 +8,9 @@ module Refinery
                 :title_attribute => 'name', :xhr_paging => true, :sortable => false,
                 :redirect_to_url => 'refinery.copywriting_admin_phrases_path'
 
-        protected
+      protected
 
-        def find_all_copywriting_phrases
+        def find_all_phrases
           @phrases = Phrase.where(:page_id => nil).order([:scope, :name])
 
           if find_scope
