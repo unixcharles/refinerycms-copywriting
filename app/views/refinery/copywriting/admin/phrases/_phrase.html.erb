@@ -13,7 +13,7 @@
     <%= link_to refinery_icon_tag("delete.png"), refinery.copywriting_admin_phrase_path(phrase),
          :title => t('.delete'),
          :class => "cancel confirm-delete",
-         :confirm => t('message', :scope => 'shared.admin.delete', :title => phrase.name.capitalize),
+         :confirm => t('message', :scope => 'refinery.admin.delete', :title => phrase.name.capitalize),
          :method => :delete %>
 
   </span>
