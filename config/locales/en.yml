@@ -18,6 +18,7 @@ en:
             edit: Edit this phrase
             delete: Remove this phrase
     pages:
-      tabs:
-        copywriting:
-          no_copywriting_yet: No copywriting for this page
+      admin:
+        tabs:
+          copywriting:
+            no_copywriting_yet: No copywriting for this page
