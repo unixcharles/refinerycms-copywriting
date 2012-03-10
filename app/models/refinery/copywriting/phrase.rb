@@ -12,23 +12,16 @@ module Refinery
         self.translation_class.send :attr_accessible, :locale
       end
 
-      class << self
-        def for(name, options = {})
-          options = {:phrase_type => 'text', :scope => 'default'}.merge(options)
-          name = name.to_s
-          page_id = (options[:page].try(:id) || options[:page_id] || nil)
+      def self.for(name, options = {})
+        options = {:phrase_type => 'text', :scope => 'default'}.merge(options)
+        options[:name] = name.to_s
+        options[:page_id] ||= options[:page].try(:id)
 
-          if (phrase = self.where(:name => name, :page_id => page_id).first).nil?
-            phrase = self.create(:name => name,
-                                 :scope => options[:scope],
-                                 :value => options[:value],
-                                 :default => options[:default],
-                                 :page_id => page_id,
-                                 :phrase_type => options[:phrase_type])
-          end
+        phrase = self.find_by_name_and_page_id(options[:name], options[:page_id]) || self.create(options)
+        phrase.update_attributes(options.except(:value, :page, :page_id, :locale))
+        phrase.save if phrase.changed?
 
-          phrase.default_or_value
-        end
+        phrase.default_or_value
       end
 
       def default_or_value
