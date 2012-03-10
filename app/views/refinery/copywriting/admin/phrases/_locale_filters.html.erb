@@ -1,4 +1,4 @@
-<% if ::Refinery.i18n_enabled? %>
+<% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales != [::Refinery::I18n.default_frontend_locale] %>
 <% locales = ::Refinery::I18n.locales.reject {|locale, title| !@locales.include?( locale ) } %>
 <ul class='collapsible_menu closed'>
 
