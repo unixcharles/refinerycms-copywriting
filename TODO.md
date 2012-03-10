@@ -2,9 +2,8 @@
 
 ## tests
 
-- Cuke pages/tabs/copywriting
-- Cuke locale filter
-- Cuke scope filter
+- Spec pages/tabs/copywriting
+- Spec admin tab
 
 ## Views
 
