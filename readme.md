@@ -1,5 +1,7 @@
 # Copywriting engine for Refinery CMS
 
+[![Build Status](https://secure.travis-ci.org/unixcharles/refinerycms-copywriting.png)](http://travis-ci.org/unixcharles/refinerycms-copywriting)
+
 __How do you manage your string in RefineryCMS?__
 
 Extended copywriting management: extract all your strings and leave no
