@@ -1,3 +1,4 @@
+language: ruby
 before_script:
   - "bundle exec rake refinery:testing:dummy_app > /dev/null"
 script: "bundle exec rake spec"
