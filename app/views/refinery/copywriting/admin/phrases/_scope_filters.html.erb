@@ -2,7 +2,7 @@
 <ul class='collapsible_menu closed'>
   <li>
     <% title = @scope ? t('.filtered_by', :filter_scope => @scope.capitalize) : t('.filter_by_scope') %>
-    <%= link_to title, '#', :style => 'background-image: url(\'/images/refinery/icons/zoom.png\');' %>
+    <%= link_to title, '#', :class => 'scope_icon' %>
   </li>
   <% if @scope %>
   <li>
