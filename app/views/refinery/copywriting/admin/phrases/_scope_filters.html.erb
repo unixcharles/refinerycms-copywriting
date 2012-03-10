@@ -1,3 +1,4 @@
+<% if @scopes.any? %>
 <ul class='collapsible_menu closed'>
   <li>
     <% title = @scope ? t('.filtered_by', :filter_scope => @scope.capitalize) : t('.filter_by_scope') %>
@@ -14,3 +15,4 @@
     </li>
   <% end %>
 </ul>
+<% end %>
