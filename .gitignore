@@ -1,0 +1,7 @@
+.gitignore
+.bundle
+*.gem
+*.DS_Store
+
+/refinerycms-copywriting*.gem
+Gemfile.lock
