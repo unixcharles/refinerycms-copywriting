@@ -56,7 +56,7 @@ describe Refinery::Copywriting::Phrase do
     end
     
     it "should allow you to scope to a page" do
-      page = Page.create(:title => "test page")
+      page = Refinery::Page.create(:title => "test page")
 
       name = "test_page"
       Refinery::Copywriting::Phrase.for(name, :page => page)
