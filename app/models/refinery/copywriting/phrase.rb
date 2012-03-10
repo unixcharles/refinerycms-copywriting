@@ -12,6 +12,8 @@ module Refinery
         self.translation_class.send :attr_accessible, :locale
       end
 
+      default_scope order([:scope, :name])
+
       def self.for(name, options = {})
         options = {:phrase_type => 'text', :scope => 'default'}.merge(options)
         options[:name] = name.to_s

@@ -1,4 +1,4 @@
-<% copywriting_phrases = @page.copywriting_phrases.order([:scope, :name]) %>
+<% copywriting_phrases = @page.copywriting_phrases %>
 <% if copywriting_phrases and copywriting_phrases.any? %>
   <div class='wym_skin_refinery page_part' id='copywriting-tab'>
     <ul>

@@ -11,7 +11,7 @@ module Refinery
       protected
 
         def find_all_phrases
-          @phrases = Phrase.where(:page_id => nil).order([:scope, :name])
+          @phrases = Phrase.where(:page_id => nil)
 
           if find_scope
             @phrases = @phrases.where(:scope => find_scope)
