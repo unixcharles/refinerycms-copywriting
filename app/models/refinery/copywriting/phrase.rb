@@ -15,7 +15,7 @@ module Refinery
       default_scope order([:scope, :name])
 
       def self.for(name, options = {})
-        options = {:phrase_type => 'text', :scope => 'default'}.merge(options)
+        options = {:phrase_type => 'text', :scope => 'default'}.merge(options.reject {|k,v| v.blank? })
         options[:name] = name.to_s
         options[:page_id] ||= options[:page].try(:id)
 
