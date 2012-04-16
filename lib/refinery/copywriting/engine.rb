@@ -4,7 +4,6 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace Refinery::Copywriting
-      engine_name :refinery_copywriting
 
       config.autoload_paths += %W( #{config.root}/lib )
 
