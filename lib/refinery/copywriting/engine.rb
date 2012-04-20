@@ -15,7 +15,7 @@ module Refinery
         end
       end
 
-      after_inclusion do
+      before_inclusion do
         ::ApplicationController.helper(CopywritingHelper)
       end
 
