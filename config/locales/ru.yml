@@ -1,0 +1,24 @@
+ru:
+  refinery:
+    plugins:
+      refinerycms_copywriting:
+        title: Копирайтинг
+    copywriting:
+      admin:
+        phrases:
+          locale_filters:
+            change_language: Сменить язык
+          scope_filters:
+            filter_by_scope: Фильтровать по контексту
+            filtered_by: "Отфильтровано по '%{filter_scope}'"
+            clear_scope_filter: Очистить
+          records:
+            no_items_yet: Записей пока еще нет.
+          phrase:
+            edit: Редактировать эту запись
+            delete: Удалить эту запись
+    pages:
+      admin:
+        tabs:
+          copywriting:
+            no_copywriting_yet: Записей для этой страницы пока еще нет
