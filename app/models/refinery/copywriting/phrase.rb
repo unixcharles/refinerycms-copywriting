@@ -1,6 +1,6 @@
 module Refinery
   module Copywriting
-    class Phrase < ActiveRecord::Base
+    class Phrase < Refinery::Core::BaseModel
 
       belongs_to :page, :class_name => 'Refinery::Page'
       translates :value if self.respond_to?(:translates)
