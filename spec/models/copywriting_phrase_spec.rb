@@ -22,7 +22,12 @@ describe Refinery::Copywriting::Phrase do
       Refinery::Copywriting::Phrase.where(:name => 'name').count.should == 1
     end
 
-    it "should return the string the value once its set" do
+    it "differentiates records by scope" do
+      2.times {|n| Refinery::Copywriting::Phrase.for('name', {:scope => "scope#{n}", :default => 'default'}) }
+      Refinery::Copywriting::Phrase.where(:name => 'name').pluck(:scope).should =~ ['scope0', 'scope1']
+    end
+
+    it "should return the string the value once it is set" do
       Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'default'
       copy = Refinery::Copywriting::Phrase.where(:name => 'name').first
       copy.value = 'updated!'
