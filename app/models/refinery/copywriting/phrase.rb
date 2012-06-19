@@ -25,9 +25,9 @@ module Refinery
         end
 
         phrase = if options[:target_type] and options[:target_id]
-          find_by_name_and_scope_and_target_type_and_target_id(options[:name], options[:scope], options[:target_type], options[:target_id])
+          where(options.slice(:name, :scope, :target_type, :target_id)).first
         else
-          find_by_name_and_scope_and_page_id(options[:name], options[:scope], options[:page_id])
+          where(options.slice(:name, :scope, :page_id)).first
         end
         phrase ||= create(options)
 
