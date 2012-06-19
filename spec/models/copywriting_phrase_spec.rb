@@ -78,6 +78,26 @@ describe Refinery::Copywriting::Phrase do
       phrase.page_id.should == 22
     end
 
+    it "should allow you to scope to a target" do
+      target = Refinery::Page.create(:title => "test page")
+
+      name = "test_target"
+      Refinery::Copywriting::Phrase.for(name, :target => target)
+      phrase = Refinery::Copywriting::Phrase.where(:name => name).first
+
+      phrase.target_id.should == target.id
+      phrase.target_type.should == target.class.to_s
+    end
+
+    it "should allow you to scope to a target_type/target_id" do
+      name = "test_target_id"
+      Refinery::Copywriting::Phrase.for(name, :target_type => 'Page', :target_id => 1)
+      phrase = Refinery::Copywriting::Phrase.where(:name => name).first
+
+      phrase.target_type.should == 'Page'
+      phrase.target_id.should == 1
+    end
+
   end
 
 end
