@@ -11,10 +11,10 @@ module Refinery
       protected
 
         def find_all_phrases
-          @phrases = Phrase.where(:page_id => nil)
+          @phrases = Phrase.untargeted
 
           if find_scope
-            @phrases = @phrases.where(:scope => find_scope)
+            @phrases = @phrases.for_scope(find_scope)
           end
         end
 
@@ -31,7 +31,7 @@ module Refinery
         end
 
         def find_all_scopes
-          @scopes ||= Phrase.select(:scope).where(:page_id => nil).map(&:scope).uniq
+          @scopes ||= Phrase.unscoped.untargeted.select(:scope).uniq.map(&:scope)
         end
 
         def default_locale
