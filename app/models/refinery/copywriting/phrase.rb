@@ -28,12 +28,7 @@ module Refinery
         end
 
         phrase = transaction do
-          if options[:target_type] and options[:target_id]
-            where(options.slice(:name, :scope, :target_type, :target_id)).first
-          else
-            where(options.slice(:name, :scope, :page_id)).first
-          end
-          phrase ||= create(options)
+          where(options.slice(:name, :scope, :page_id, :target_type, :target_id)).first || create(options)
         end
 
         phrase.update_attributes(options.except(:value, :page, :page_id, :target, :target_type, :target_id, :locale))
