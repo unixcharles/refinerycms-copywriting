@@ -27,13 +27,15 @@ module Refinery
           options[:target_id] = target.id
         end
 
-        phrase = if options[:target_type] and options[:target_id]
-          where(options.slice(:name, :scope, :target_type, :target_id)).first
-        else
-          where(options.slice(:name, :scope, :page_id)).first
+        transaction do
+          phrase = if options[:target_type] and options[:target_id]
+            where(options.slice(:name, :scope, :target_type, :target_id)).first
+          else
+            where(options.slice(:name, :scope, :page_id)).first
+          end
+          phrase ||= create(options)
         end
-        phrase ||= create(options)
-
+        
         phrase.update_attributes(options.except(:value, :page, :page_id, :target, :target_type, :target_id, :locale))
         phrase.last_access_at = Date.today
         phrase.save if phrase.changed?
