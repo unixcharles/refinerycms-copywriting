@@ -1,0 +1,24 @@
+pl:
+  refinery:
+    plugins:
+      refinerycms_copywriting:
+        title: "Stopki"
+    copywriting:
+      admin:
+        phrases:
+          locale_filters:
+            change_language: "Zmień język"
+          scope_filters:
+            filter_by_scope: "Filtruj wg elementu"
+            filtered_by: "Filtruj wg '%{filter_scope}'"
+            clear_scope_filter: "WYczyść"
+          records:
+            no_items_yet: "Nie ma jeszcze żadnej frazy do edycji."
+          phrase:
+            edit: "Edytuj frazę"
+            delete: "Usuń frazę"
+    pages:
+      admin:
+        tabs:
+          copywriting:
+            no_copywriting_yet: "Brak frazy do edycji dla tej strony"
