@@ -31,7 +31,7 @@ module Refinery
         end
 
         def find_all_scopes
-          @scopes ||= Phrase.unscoped.untargeted.select(:scope).uniq.map(&:scope)
+          @scopes ||= Phrase.unscoped.untargeted.uniq.pluck(:scope)
         end
 
         def default_locale
