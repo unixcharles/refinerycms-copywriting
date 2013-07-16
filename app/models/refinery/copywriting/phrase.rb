@@ -15,9 +15,14 @@ module Refinery
 
       default_scope order([:scope, :name])
 
-      scope :untargeted, where(:page_id => nil, :target_id => nil)
-      scope :for_scope, lambda { |scope_name| where(:scope => scope_name) }
-
+      def self.untargeted
+        where(:page_id => nil, :target_id => nil)
+      end
+      
+      def self.for_scope(name)
+        where(:scope => scope_name)
+      end
+      
       def self.for(name, options = {})
         options = {:phrase_type => 'text', :scope => 'default'}.merge(options.reject {|k,v| v.blank? })
         options[:name] = name.to_s
