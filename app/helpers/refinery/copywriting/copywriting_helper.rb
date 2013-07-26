@@ -9,7 +9,7 @@ module Refinery
 
         case options[:phrase_type]
         when 'image'
-          Refinery::Image.find(result.to_i) 
+          Refinery::Image.find_by_id(result.to_i) 
         else
           result
         end
