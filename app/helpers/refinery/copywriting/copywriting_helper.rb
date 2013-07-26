@@ -6,6 +6,13 @@ module Refinery
         options[:default] = block_given? ? capture(&block) : options[:default]
 
         result = ::Refinery::Copywriting::Phrase.for(name, options)
+
+        case options[:phrase_type]
+        when 'image'
+          Refinery::Image.find(result.to_i) 
+        else
+          result
+        end
       end
 
       def copywriting_options(options, &block)
