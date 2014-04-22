@@ -45,6 +45,12 @@ module Refinery
           end
         end
 
+      private
+
+        def phrase_params
+          params.require(:phrase).permit(:locale, :name, :default, :value, :scope, :page, :page_id, :phrase_type)
+        end
+
       end
     end
   end

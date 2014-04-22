@@ -2,12 +2,12 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'refinerycms', '~> 2.0.0'
+gem 'refinerycms', '~> 2.1.0'
 
 group :development, :test do
   require 'rbconfig'
 
-  gem 'refinerycms-testing', '~> 2.0.0'
+  gem 'refinerycms-testing', '~> 2.1.0'
 
   platforms :jruby do
     gem 'activerecord-jdbcsqlite3-adapter'
@@ -59,10 +59,8 @@ group :development, :test do
 end
 
 # Refinery/rails should pull in the proper versions of these
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
