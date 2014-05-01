@@ -11,5 +11,10 @@ module Refinery
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
     end
+
+    def self.table_name_prefix
+      'refinery_cw_'
+    end
+
   end
 end

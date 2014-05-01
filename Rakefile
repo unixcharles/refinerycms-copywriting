@@ -13,7 +13,6 @@ if File.exists?(APP_RAKEFILE)
 end
 
 require "refinerycms-testing"
-Refinery::Testing::Railtie.load_tasks
 Refinery::Testing::Railtie.load_dummy_tasks(ENGINE_PATH)
 
 require 'rspec/core/rake_task'
