@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Refinery::Copywriting::Phrase do
 
   context "validations" do
-    
+
     it "rejects empty name" do
       copy = Refinery::Copywriting::Phrase.new
       copy.save.should be_false
     end
-    
+
   end
 
   context "for" do
@@ -35,7 +35,7 @@ describe Refinery::Copywriting::Phrase do
 
       Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'updated!'
     end
-    
+
     it "should save options" do
       Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default', :phrase_type => 'wysiwyg'})
 
@@ -47,7 +47,7 @@ describe Refinery::Copywriting::Phrase do
       phrase.default.should == "default"
       phrase.value.should == nil
     end
-    
+
     it "should have defaults options" do
       name = "test_defaults"
       Refinery::Copywriting::Phrase.for(name)
@@ -59,14 +59,14 @@ describe Refinery::Copywriting::Phrase do
       phrase.default.should == nil
       phrase.value.should == nil
     end
-    
+
     it "should allow you to scope to a page" do
       page = Refinery::Page.create(:title => "test page")
 
       name = "test_page"
       Refinery::Copywriting::Phrase.for(name, :page => page)
       phrase = Refinery::Copywriting::Phrase.where(:name => name).first
-      
+
       phrase.page_id.should == page.id
     end
 
@@ -74,7 +74,7 @@ describe Refinery::Copywriting::Phrase do
       name = "test_page_id"
       Refinery::Copywriting::Phrase.for(name, :page_id => 22)
       phrase = Refinery::Copywriting::Phrase.where(:name => name).first
-      
+
       phrase.page_id.should == 22
     end
 
