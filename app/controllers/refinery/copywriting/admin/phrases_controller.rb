@@ -8,7 +8,7 @@ module Refinery
                 :title_attribute => 'name', :xhr_paging => true, :sortable => false,
                 :redirect_to_url => 'refinery.copywriting_admin_phrases_path'
 
-      protected
+        protected
 
         def find_all_phrases
           @phrases = Phrase.where(:page_id => nil)
@@ -45,10 +45,11 @@ module Refinery
           end
         end
 
-      private
-
         def phrase_params
-          params.require(:phrase).permit(:locale, :name, :default, :value, :scope, :page, :page_id, :phrase_type)
+          params.require(:phrase).permit(
+            :locale, :name, :default, :value, :scope, :page, :page_id,
+            :phrase_type
+          )
         end
 
       end

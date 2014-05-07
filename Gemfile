@@ -8,7 +8,7 @@ gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
 group :development, :test do
   require 'rbconfig'
 
-  gem 'refinerycms-testing'
+  gem 'refinerycms-testing', github: 'refinery/refinerycms', branch: 'master'
 
   platforms :jruby do
     gem 'activerecord-jdbcsqlite3-adapter'

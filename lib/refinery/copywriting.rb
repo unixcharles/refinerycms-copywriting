@@ -12,9 +12,5 @@ module Refinery
       end
     end
 
-    def self.table_name_prefix
-      'refinery_cw_'
-    end
-
   end
 end

@@ -6,7 +6,7 @@ module Refinery
       translates :value if self.respond_to?(:translates)
       validates :name, :presence => true
 
-      default_scope order([:scope, :name])
+      default_scope { order([:scope, :name]) }
 
       def self.for(name, options = {})
         options = {:phrase_type => 'text', :scope => 'default'}.merge(options.reject {|k,v| v.blank? })
