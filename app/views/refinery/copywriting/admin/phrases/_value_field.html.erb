@@ -6,6 +6,12 @@
     <%= f.text_area :value, :value => value, :rows => 12, :class => 'widest' -%>
   <% when "wysiwyg" %>
     <%= f.text_area :value, :value => value, :rows => 5, :class => 'widest wymeditor' -%>
+  <% when "image" %>
+    <%= render '/refinery/admin/image_picker',
+               :f => f,
+               :field => 'value',
+               :image => Refinery::Image.find_by_id(value.to_i),
+               :toggle_image_display => false -%>
   <% else %>
     <%= f.text_field :value, :value => value, :class => 'widest larger' -%>
   <% end %>

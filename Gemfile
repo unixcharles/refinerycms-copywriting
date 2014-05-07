@@ -60,10 +60,8 @@ group :development, :test do
 end
 
 # Refinery/rails should pull in the proper versions of these
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
