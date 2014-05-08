@@ -5,6 +5,9 @@
   <%= render 'actions' %>
 </aside>
 
+
+<%= render '/refinery/admin/make_sortable', options: {tree: false} if ::Refinery::Copywriting::Admin::PhrasesController.sortable? and ::Refinery::Copywriting::Phrase.many? %>
+
 <% content_for :stylesheets do %>
   <%= stylesheet_link_tag 'refinery/copywriting/backend' %>
 <% end %>
