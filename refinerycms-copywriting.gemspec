@@ -10,4 +10,6 @@ Gem::Specification.new do |s|
   s.homepage          = 'http://github.com/unixcharles/refinerycms-copywriting'
   s.require_paths     = %w(lib)
   s.files             = Dir['lib/**/*', 'config/**/*', 'app/**/*', 'db/**/*', 'spec/**/*', 'features/**/*']
+
+  s.add_dependency    'decorators', '~> 1.0.0'
 end
