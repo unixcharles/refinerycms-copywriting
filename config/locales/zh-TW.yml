@@ -9,8 +9,8 @@ zh-TW:
           locale_filters:
             change_language: 更改語言
           scope_filters:
-            filter_by_scope: 過濾範圍
-            filtered_by: "經 '%{filter_scope}' 過濾"
+            filter_by_scope: 篩選範圍
+            filtered_by: "經 '%{filter_scope}' 篩選"
             clear_scope_filter: 清空
           records:
             no_items_yet: 還未有抄寫短語。
