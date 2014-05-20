@@ -3,6 +3,7 @@ en:
     plugins:
       refinerycms_copywriting:
         title: Copywriting
+        title_tab: Copywriting
     copywriting:
       admin:
         phrases:

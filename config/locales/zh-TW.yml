@@ -3,6 +3,7 @@ zh-TW:
     plugins:
       refinerycms_copywriting:
         title: 抄寫
+        title_tab: 抄寫
     copywriting:
       admin:
         phrases:
