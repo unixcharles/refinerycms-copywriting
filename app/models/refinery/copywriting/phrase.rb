@@ -7,22 +7,16 @@ module Refinery
       translates :value if self.respond_to?(:translates)
       validates :name, :presence => true
 
-      attr_accessible :locale, :name, :default, :value, :scope, :page, :page_id, :target, :target_id, :target_type, :phrase_type
-
-      if self.respond_to?(:translation_class)
-        self.translation_class.send :attr_accessible, :locale
-      end
-
-      default_scope order([:scope, :name])
+      default_scope { order([:scope, :name]) }
 
       def self.untargeted
         where(:page_id => nil, :target_id => nil)
       end
-      
+
       def self.for_scope(name)
         where(:scope => scope_name)
       end
-      
+
       def self.for(name, options = {})
         options = {:phrase_type => 'text', :scope => 'default'}.merge(options.reject {|k,v| v.blank? })
         options[:name] = name.to_s
@@ -44,7 +38,7 @@ module Refinery
       end
 
       def default_or_value
-        value.present? ? value : default
+        value.presence || default
       end
 
     end

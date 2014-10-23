@@ -1,0 +1,25 @@
+zh-TW:
+  refinery:
+    plugins:
+      refinerycms_copywriting:
+        title: 抄寫
+        title_tab: 抄寫
+    copywriting:
+      admin:
+        phrases:
+          locale_filters:
+            change_language: 更改語言
+          scope_filters:
+            filter_by_scope: 篩選範圍
+            filtered_by: "經 '%{filter_scope}' 篩選"
+            clear_scope_filter: 清空
+          records:
+            no_items_yet: 還未有抄寫短語。
+          phrase:
+            edit: 修改此短語
+            delete: 刪除此短語
+    pages:
+      admin:
+        tabs:
+          copywriting:
+            no_copywriting_yet: 這版面沒有短語

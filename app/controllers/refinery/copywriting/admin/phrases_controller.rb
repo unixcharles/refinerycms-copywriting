@@ -8,7 +8,7 @@ module Refinery
                 :title_attribute => 'name', :xhr_paging => true, :sortable => false,
                 :redirect_to_url => 'refinery.copywriting_admin_phrases_path'
 
-      protected
+        protected
 
         def find_all_phrases
           @phrases = Phrase.untargeted
@@ -43,6 +43,13 @@ module Refinery
           if params[:switch_locale]
             Thread.current[:globalize_locale] = (params[:switch_locale] || default_locale).try(:to_sym)
           end
+        end
+
+        def phrase_params
+          params.require(:phrase).permit(
+            :locale, :name, :default, :value, :scope, :page, :page_id,
+            :phrase_type
+          )
         end
 
       end
