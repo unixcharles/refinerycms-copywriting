@@ -13,9 +13,10 @@ class CreateCopywritingTranslationTable < ActiveRecord::Migration
       :migrate_data => true
     })
 
-    with_short_sqlite_compatible_index do
-      rename_column Refinery::Copywriting::Phrase.translation_class.table_name, :copywriting_phrase_id, :refinery_copywriting_phrase_id
-    end
+    # to prevent long index name errors on some adapters
+    remove_index Refinery::Copywriting::Phrase.translation_class.table_name, [:copywriting_phrase_id]
+    rename_column Refinery::Copywriting::Phrase.translation_class.table_name, :copywriting_phrase_id, :refinery_copywriting_phrase_id
+    add_index Refinery::Copywriting::Phrase.translation_class.table_name, :refinery_copywriting_phrase_id, :name => "index_short_on_refinery_copywriting_phrase_id"
 
     ::Refinery::Copywriting::Phrase.table_name = "refinery_#{Refinery::Copywriting::Phrase.table_name}"
     ::Refinery::Copywriting::Phrase.module_eval do
@@ -38,17 +39,6 @@ class CreateCopywritingTranslationTable < ActiveRecord::Migration
       has_many :translations, :foreign_key => 'copywriting_phrase_id'
     end
     ::Refinery::Copywriting::Phrase.translation_class.table_name = "refinery_#{Refinery::Copywriting::Phrase.translation_class.table_name}"
-  end
-
-  
-  def self.with_short_sqlite_compatible_index
-    if ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :sqlite
-      remove_index Refinery::Copywriting::Phrase.translation_class.table_name, [:copywriting_phrase_id]#[:index_altered_copywriting_phrase_translations_on_copywriting_phrase_id] 
-      yield
-      add_index Refinery::Copywriting::Phrase.translation_class.table_name, :refinery_copywriting_phrase_id, :name => "index_short_on_refinery_copywriting_phrase_id"
-    else
-      yield
-    end
   end
 
 end

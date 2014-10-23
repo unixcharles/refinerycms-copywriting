@@ -1,5 +1,5 @@
 <div class='field'>
-  <%= f.label :value, f.object.name.capitalize -%>
+  <%= f.label :value, f.object.name -%>
   <% value = f.object.default_or_value %>
   <% case f.object.phrase_type %>
   <% when "text" %>

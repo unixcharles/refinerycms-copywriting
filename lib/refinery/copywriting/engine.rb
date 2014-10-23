@@ -1,6 +1,7 @@
 module Refinery
   module Copywriting
     class Engine < Rails::Engine
+
       include Refinery::Engine
 
       isolate_namespace Refinery::Copywriting
@@ -11,8 +12,8 @@ module Refinery
         ::Refinery::Page.module_eval do
           has_many :copywriting_phrases, :dependent => :destroy, :class_name => 'Refinery::Copywriting::Phrase'
           accepts_nested_attributes_for :copywriting_phrases, :allow_destroy => false
-          attr_accessible :copywriting_phrases_attributes
         end
+        Decorators.register! ::Refinery::Copywriting.root
       end
 
       before_inclusion do
