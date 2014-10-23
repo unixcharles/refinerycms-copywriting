@@ -1,14 +1,14 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
 gemspec
 
-gem 'refinerycms', github: 'refinery/refinerycms', branch: 'master'
-gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
+gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
+gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
 
 group :development, :test do
   require 'rbconfig'
 
-  gem 'refinerycms-testing', github: 'refinery/refinerycms', branch: 'master'
+  gem 'refinerycms-testing', git: 'https://github.com/refinery/refinerycms', branch: 'master'
 
   platforms :jruby do
     gem 'activerecord-jdbcsqlite3-adapter'
