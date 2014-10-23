@@ -3,14 +3,14 @@ module Refinery
     class Phrase < Refinery::Core::BaseModel
 
       belongs_to :page, :class_name => 'Refinery::Page'
-      belongs_to :target, :polymorphic => true
+      belongs_to :targetable, :polymorphic => true
       translates :value if self.respond_to?(:translates)
       validates :name, :presence => true
 
       default_scope { order([:scope, :name]) }
 
       def self.untargeted
-        where(:page_id => nil, :target_id => nil)
+        where(:page_id => nil, :targetable_id => nil)
       end
 
       def self.for_scope(name)
@@ -22,15 +22,15 @@ module Refinery
         options[:name] = name.to_s
         options[:page_id] ||= options[:page].try(:id)
         if target = options.delete(:target)
-          options[:target_type] = target.class.to_s
-          options[:target_id] = target.id
+          options[:targetable_type] = target.class.to_s
+          options[:targetable_id] = target.id
         end
 
         phrase = transaction do
-          where(options.slice(:name, :scope, :page_id, :target_type, :target_id)).first || create(options)
+          where(options.slice(:name, :scope, :page_id, :targetable_type, :targetable_id)).first || create(options)
         end
 
-        phrase.update_attributes(options.except(:value, :page, :page_id, :target, :target_type, :target_id, :locale))
+        phrase.update_attributes(options.except(:value, :page, :page_id, :target, :targetable_type, :targetable_id, :locale))
         phrase.last_access_at = Date.today
         phrase.save if phrase.changed?
 
