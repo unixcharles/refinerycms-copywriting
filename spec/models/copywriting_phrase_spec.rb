@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Refinery::Copywriting::Phrase do
+describe Refinery::Copywriting::Phrase, type: :model do
 
   context "validations" do
 
     it "rejects empty name" do
       copy = Refinery::Copywriting::Phrase.new
-      copy.save.should be_false
+      expect(copy.save).to be_falsey
     end
 
   end
@@ -14,26 +14,26 @@ describe Refinery::Copywriting::Phrase do
   context "for" do
 
     it "should return the default string if value is not set" do
-      Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'default'
+      expect(Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'})).to eq('default')
     end
 
     it "should not duplicate copywriting phrases" do
       2.times { Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}) }
-      Refinery::Copywriting::Phrase.where(:name => 'name').count.should == 1
+      expect(Refinery::Copywriting::Phrase.where(:name => 'name').count).to eq(1)
     end
 
     it "differentiates records by scope" do
       2.times {|n| Refinery::Copywriting::Phrase.for('name', {:scope => "scope#{n}", :default => 'default'}) }
-      Refinery::Copywriting::Phrase.where(:name => 'name').pluck(:scope).should =~ ['scope0', 'scope1']
+      expect(Refinery::Copywriting::Phrase.where(:name => 'name').pluck(:scope)).to match_array(['scope0', 'scope1'])
     end
 
     it "should return the string the value once it is set" do
-      Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'default'
+      expect(Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'})).to eq('default')
       copy = Refinery::Copywriting::Phrase.where(:name => 'name').first
       copy.value = 'updated!'
       copy.save
 
-      Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'}).should == 'updated!'
+      expect(Refinery::Copywriting::Phrase.for('name', {:scope => 'scope', :default => 'default'})).to eq('updated!')
     end
 
     it "should save options" do
@@ -41,11 +41,11 @@ describe Refinery::Copywriting::Phrase do
 
       phrase = Refinery::Copywriting::Phrase.where(:name => 'name').first
 
-      phrase.name.should == "name"
-      phrase.phrase_type.should == "wysiwyg"
-      phrase.scope.should == "scope"
-      phrase.default.should == "default"
-      phrase.value.should == nil
+      expect(phrase.name).to eq('name')
+      expect(phrase.phrase_type).to eq('wysiwyg')
+      expect(phrase.scope).to eq('scope')
+      expect(phrase.default).to eq('default')
+      expect(phrase.value).to be_nil
     end
 
     it "should have defaults options" do
@@ -53,11 +53,11 @@ describe Refinery::Copywriting::Phrase do
       Refinery::Copywriting::Phrase.for(name)
       phrase = Refinery::Copywriting::Phrase.where(:name => name).first
 
-      phrase.name.should == name
-      phrase.phrase_type.should == "text"
-      phrase.scope.should == "default"
-      phrase.default.should == nil
-      phrase.value.should == nil
+      expect(phrase.name).to eq(name)
+      expect(phrase.phrase_type).to eq('text')
+      expect(phrase.scope).to eq('default')
+      expect(phrase.default).to be_nil
+      expect(phrase.value).to be_nil
     end
 
     it "should allow you to scope to a page" do
@@ -67,7 +67,7 @@ describe Refinery::Copywriting::Phrase do
       Refinery::Copywriting::Phrase.for(name, :page => page)
       phrase = Refinery::Copywriting::Phrase.where(:name => name).first
 
-      phrase.page_id.should == page.id
+      expect(phrase.page_id).to eq(page.id)
     end
 
     it "should allow you to scope to a page_id" do
@@ -75,7 +75,7 @@ describe Refinery::Copywriting::Phrase do
       Refinery::Copywriting::Phrase.for(name, :page_id => 22)
       phrase = Refinery::Copywriting::Phrase.where(:name => name).first
 
-      phrase.page_id.should == 22
+      expect(phrase.page_id).to eq(22)
     end
 
   end
