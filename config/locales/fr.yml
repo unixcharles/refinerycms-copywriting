@@ -1,0 +1,25 @@
+fr:
+  refinery:
+    plugins:
+      refinerycms_copywriting:
+        title: Copywriting
+        title_tab: Copywriting
+    copywriting:
+      admin:
+        phrases:
+          locale_filters:
+            change_language: Changer la langue
+          scope_filters:
+            filter_by_scope: Filtrer par contexte
+            filtered_by: "Filtré par '%{filter_scope}'"
+            clear_scope_filter: Supprimer le filtre
+          records:
+            no_items_yet: Il n'y a pas de phrases de Copywriting.
+          phrase:
+            edit: Modifier cette phrase
+            delete: Supprimer cette phrase
+    pages:
+      admin:
+        tabs:
+          copywriting:
+            no_copywriting_yet: Pas de phrases de Copywriting pour cette page.
