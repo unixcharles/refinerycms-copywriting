@@ -1,3 +1,12 @@
+<% # setup params for various action links
+  edit_url = refinery.edit_copywriting_admin_phrase_path(phrase, :dialog => true, :switch_locale => @current_locale, :height => 620)
+  delete_url = refinery.copywriting_admin_phrase_path(phrase)
+  delete_options = {
+     class: "cancel confirm-delete",
+            data: {confirm: t('message',  scope: 'refinery.admin.delete', title: phrase.name.capitalize)}
+          }
+ %>
+
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(phrase) -%>">
   <span class='title'>
     <% if @scope.nil? and phrase.scope %>
@@ -6,15 +15,9 @@
     <b><%= phrase.name %></b>
     <span class="preview">- <%= truncate(phrase.default_or_value, :length => 40) %></span>
   </span>
+
   <span class='actions'>
-    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_copywriting_admin_phrase_path(phrase, :dialog => true, :switch_locale => @current_locale, :height => 620),
-         :title => t('.edit') %>
-
-    <%= link_to refinery_icon_tag("delete.png"), refinery.copywriting_admin_phrase_path(phrase),
-         :title => t('.delete'),
-         :class => "cancel confirm-delete",
-         :confirm => t('message', :scope => 'refinery.admin.delete', :title => phrase.name.capitalize),
-         :method => :delete %>
-
+    <%= action_icon(:edit,   edit_url,   t('edit',   scope: 'refinery.admin.pages' ) ) %>
+    <%= action_icon(:delete, delete_url, t('delete', scope: 'refinery.admin.pages' ), delete_options )%>
   </span>
 </li>
