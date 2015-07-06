@@ -3,7 +3,7 @@
   delete_url = refinery.copywriting_admin_phrase_path(phrase)
   delete_options = {
      class: "cancel confirm-delete",
-            data: {confirm: t('message',  scope: 'refinery.admin.delete', title: phrase.name.capitalize)}
+            data: {confirm: t('message', scope: 'refinery.admin.delete', title: phrase.name.capitalize)}
           }
  %>
 
@@ -17,7 +17,7 @@
   </span>
 
   <span class='actions'>
-    <%= action_icon(:edit,   edit_url,   t('edit',   scope: 'refinery.admin.pages' ) ) %>
+    <%= action_icon(:edit, edit_url, t('edit', scope: 'refinery.admin.pages' ) ) %>
     <%= action_icon(:delete, delete_url, t('delete', scope: 'refinery.admin.pages' ), delete_options )%>
   </span>
 </li>
