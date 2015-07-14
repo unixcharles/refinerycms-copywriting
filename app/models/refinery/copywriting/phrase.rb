@@ -14,7 +14,7 @@ module Refinery
       end
 
       def self.for_scope(name)
-        where(:scope => scope_name)
+        where(:scope => name)
       end
 
       def self.for(name, options = {})
