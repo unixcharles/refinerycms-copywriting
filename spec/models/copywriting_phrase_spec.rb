@@ -85,8 +85,8 @@ describe Refinery::Copywriting::Phrase, type: :model do
       Refinery::Copywriting::Phrase.for(name, :target => target)
       phrase = Refinery::Copywriting::Phrase.where(:name => name).first
 
-      phrase.targetable_id.should == target.id
-      phrase.targetable_type.should == target.class.to_s
+      expect(phrase.targetable_id).to eq(target.id)
+      expect(phrase.targetable_type).to eq(target.class.to_s)
     end
 
     it "should allow you to scope to a targetable_type/targetable_id" do
@@ -94,8 +94,8 @@ describe Refinery::Copywriting::Phrase, type: :model do
       Refinery::Copywriting::Phrase.for(name, :targetable_type => 'Page', :targetable_id => 1)
       phrase = Refinery::Copywriting::Phrase.where(:name => name).first
 
-      phrase.targetable_type.should == 'Page'
-      phrase.targetable_id.should == 1
+      expect(phrase.targetable_type).to eq('Page')
+      expect(phrase.targetable_id).to eq(1)
     end
 
   end
