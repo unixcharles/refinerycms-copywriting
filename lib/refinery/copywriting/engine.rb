@@ -14,6 +14,8 @@ module Refinery
           accepts_nested_attributes_for :copywriting_phrases, :allow_destroy => false
         end
         Decorators.register! ::Refinery::Copywriting.root
+
+        Rails.application.config.assets.precompile += %w(refinery/copywriting.css)
       end
 
       before_inclusion do
@@ -31,10 +33,6 @@ module Refinery
           plugin.name = 'refinerycms_copywriting'
           plugin.url = {:controller => '/refinery/copywriting/admin/phrases'}
           plugin.menu_match = /copywriting/
-          plugin.activity = {
-            :class_name => 'Refinery::Copywriting::Phrase',
-            :title => :name
-          }
         end
       end
 
