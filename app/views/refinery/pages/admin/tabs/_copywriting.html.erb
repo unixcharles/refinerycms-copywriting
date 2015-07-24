@@ -2,8 +2,9 @@
 <% if copywriting_phrases and copywriting_phrases.any? %>
   <div class='wym_skin_refinery page_part' id='copywriting-tab'>
     <ul>
-      <% copywriting_phrases.each do |phrase| %>
+      <% copywriting_phrases.group_by(&:scope).each do |scope, phrase| %>
         <li>
+          <h2><%= scope.humanize %></h2>
           <%= f.fields_for :copywriting_phrases, phrase do |p| %>
             <%= render 'refinery/copywriting/admin/phrases/value_field', :f => p %>
           <% end %>
