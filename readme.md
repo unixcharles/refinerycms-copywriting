@@ -57,6 +57,49 @@ Pass the `@page` object in the options hash:
 
 ![screenshot](http://s3.amazonaws.com:80/unixcharles.baconfile.com/screenshot2.png)
 
+__And if it's a model you need to scope against rather than a page?__
+
+Include Refinery::Copywriting::Phraseable into the model:
+
+```ruby
+class Article < Refinery::Core::BaseModel
+  include Refinery::Copywriting::Phraseable
+end
+```
+
+Then you can use :target in the options hash:
+
+```erb
+<%= copywriting('read more', { :scope => 'footer', :target => @article }) do %>
+  To find out more please email: theauthor@example.com
+<% end %>
+```
+
+In order to see a copywriting tab for the model in the Refinery backend you'll
+need to adjust the model's admin _form.html.erb partial.
+
+Add a copywriting tab heading:
+
+```erb
+<ul id="page_parts">
+  ... refinery tab headings ...
+  <li class='ui-state-default' id="copywriting_tab">
+    <%= link_to 'Copywriting', "#copywriting_tab_0" %>
+  </li>
+</ul>
+```
+
+And then the copywriting tab content:
+
+```erb
+<div id="page_part_editors">
+  ... refinery tabs ...
+  <div class='page_part' id='copywriting_tab_0'>
+    <%= render '/refinery/pages/admin/tabs/copywriting', :f => f %>
+  </div>
+</div>
+```
+
 ## Install
 
 ```ruby

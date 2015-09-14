@@ -78,6 +78,26 @@ describe Refinery::Copywriting::Phrase, type: :model do
       expect(phrase.page_id).to eq(22)
     end
 
+    it "should allow you to scope to a targetable" do
+      target = Refinery::Page.create(:title => "test page")
+
+      name = "test_target"
+      Refinery::Copywriting::Phrase.for(name, :target => target)
+      phrase = Refinery::Copywriting::Phrase.where(:name => name).first
+
+      expect(phrase.targetable_id).to eq(target.id)
+      expect(phrase.targetable_type).to eq(target.class.to_s)
+    end
+
+    it "should allow you to scope to a targetable_type/targetable_id" do
+      name = "test_targetable_id"
+      Refinery::Copywriting::Phrase.for(name, :targetable_type => 'Page', :targetable_id => 1)
+      phrase = Refinery::Copywriting::Phrase.where(:name => name).first
+
+      expect(phrase.targetable_type).to eq('Page')
+      expect(phrase.targetable_id).to eq(1)
+    end
+
   end
 
 end
