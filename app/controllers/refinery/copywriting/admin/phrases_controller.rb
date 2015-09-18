@@ -5,7 +5,7 @@ module Refinery
         before_filter :find_all_locales, :find_locale, :find_scope, :find_all_scopes
 
         crudify :'refinery/copywriting/phrase', :searchable => false,
-                :title_attribute => 'name', :xhr_paging => true, :sortable => false,
+                :title_attribute => 'name', :xhr_paging => true, :sortable => true,
                 :redirect_to_url => 'refinery.copywriting_admin_phrases_path'
 
         protected
@@ -16,6 +16,9 @@ module Refinery
           if find_scope
             @phrases = @phrases.where(:scope => find_scope)
           end
+
+          @phrases_by_scope = @phrases.group_by(&:scope)
+
         end
 
         def find_locale

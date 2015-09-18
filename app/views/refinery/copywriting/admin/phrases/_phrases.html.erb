@@ -1,4 +1,15 @@
-<%= will_paginate @phrases, :params => { :controller => "refinery/copywriting/admin/phrases", :action => "index" } %>
-<ul id='phrases'>
-  <%= render :partial => 'refinery/copywriting/admin/phrases/phrase', :collection => @phrases %>
-</ul>
+<%#= will_paginate @phrases, :params => { :controller => "refinery/copywriting/admin/phrases", :action => "index" } %>
+<% @phrases_by_scope.each do |scope_name, phrases| %>
+
+  <% if @scope %>
+    <h3><%= @scope.name %></h3>
+  <% else %>
+    <% if scope_name == "default" %>
+      <h3>Unscoped</h3>
+    <% else %>
+      <h3><%= link_to scope_name.capitalize, refinery.copywriting_admin_phrases_path(:filter_scope => scope_name) %></h3>
+    <% end %>
+  <% end %>
+
+  <%= render 'sortable_list', phrases: phrases %>
+<% end %>

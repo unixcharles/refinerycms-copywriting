@@ -1,0 +1,16 @@
+<ul>
+<% if ::Refinery::Copywriting::Admin::PhrasesController.sortable? && ::Refinery::Copywriting::Phrase.many? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Phrases"),
+                 refinery.copywriting_admin_phrases_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Phrases"),
+                 refinery.copywriting_admin_phrases_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>
