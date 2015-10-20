@@ -4,9 +4,12 @@ module Refinery
       class PhrasesController < ::Refinery::AdminController
         before_filter :find_all_locales, :find_locale, :find_scope, :find_all_scopes
 
-        crudify :'refinery/copywriting/phrase', :searchable => false,
-                :title_attribute => 'name', :xhr_paging => true, :sortable => false,
-                :redirect_to_url => 'refinery.copywriting_admin_phrases_path'
+        crudify :'refinery/copywriting/phrase', 
+                searchable: false,
+                title_attribute: 'name',
+                sortable: false,
+                redirect_to_url: 'refinery.copywriting_admin_phrases_path',
+                include: [:translations]
 
         protected
 
