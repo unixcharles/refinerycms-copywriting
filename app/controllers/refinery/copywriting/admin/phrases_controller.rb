@@ -2,7 +2,7 @@ module Refinery
   module Copywriting
     module Admin
       class PhrasesController < ::Refinery::AdminController
-        before_filter :find_all_locales, :find_locale, :find_scope, :find_all_scopes
+        before_action :find_scope, :find_all_scopes
 
         crudify :'refinery/copywriting/phrase', 
                 searchable: false,
