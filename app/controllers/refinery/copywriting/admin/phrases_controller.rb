@@ -21,14 +21,6 @@ module Refinery
           end
         end
 
-        def find_locale
-          @current_locale ||= (params[:switch_locale].try(:to_sym) || Thread.current[:globalize_locale] || default_locale).to_sym
-        end
-
-        def find_all_locales
-          @locales ||= ::Refinery::I18n.frontend_locales
-        end
-
         def find_scope
           @scope ||= params[:filter_scope]
         end
@@ -37,20 +29,14 @@ module Refinery
           @scopes ||= Phrase.select(:scope).where(:page_id => nil).map(&:scope).uniq
         end
 
-        def default_locale
-          ::Refinery::I18n.default_frontend_locale
-        end
-
-        def globalize!
-          super
-          if params[:switch_locale]
-            Thread.current[:globalize_locale] = (params[:switch_locale] || default_locale).try(:to_sym)
-          end
-        end
-
         def phrase_params
           params.require(:phrase).permit(
-            :locale, :name, :default, :value, :scope, :page, :page_id,
+            :name, 
+            :default, 
+            :value, 
+            :scope, 
+            :page, 
+            :page_id,
             :phrase_type
           )
         end
