@@ -1,5 +1,5 @@
 <% # setup params for various action links
-  edit_url = refinery.edit_copywriting_admin_phrase_path(phrase, :dialog => true, :switch_locale => @current_locale, :height => 620)
+  edit_url = refinery.edit_copywriting_admin_phrase_path(phrase, :switch_locale => @current_locale)
   delete_url = refinery.copywriting_admin_phrase_path(phrase)
   delete_options = {
      class: "cancel confirm-delete",
@@ -13,7 +13,22 @@
       <%= link_to phrase.scope.capitalize, refinery.copywriting_admin_phrases_path(:filter_scope => phrase.scope) %>
     <% end %>
     <b><%= phrase.name %></b>
-    <span class="preview">- <%= truncate(phrase.default_or_value, :length => 40) %></span>
+    <span class="preview">- <%= truncate(phrase.default_or_value, :length => 40) %>
+      <% if Refinery::I18n.frontend_locales.many? %>
+        <span class='locales'>
+          <% phrase.translations.sort_by{ |t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
+            <% if translation.value.present? %>
+              <%= link_to refinery.edit_copywriting_admin_phrase_path(phrase, :switch_locale => translation.locale), :class => 'locale', title: translation.locale.upcase do %>
+
+                <div class="<%=translation.locale %> locale_marker">
+                  <%= locale_text_icon(translation.locale.upcase) %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </span>
+      <% end %>
+    </span>
   </span>
 
   <span class='actions'>

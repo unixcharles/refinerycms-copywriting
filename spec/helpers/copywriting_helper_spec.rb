@@ -18,9 +18,9 @@ describe Refinery::Copywriting::CopywritingHelper, type: :helper do
 
       result = copywriting("test block") { block_text }
 
-      pharse = Refinery::Copywriting::Phrase.where(:name => "test block").first
-      expect(pharse).to_not be_nil
-      expect(pharse.default).to eq(block_text)
+      phrase = Refinery::Copywriting::Phrase.where(:name => "test block").first
+      expect(phrase).to_not be_nil
+      expect(phrase.default).to eq(block_text)
 
       expect(copywriting("test block")).to eq(block_text)
     end

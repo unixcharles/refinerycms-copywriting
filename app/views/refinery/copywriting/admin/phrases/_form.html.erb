@@ -1,6 +1,7 @@
 <%= form_for [refinery, :copywriting, :admin, @phrase] do |f| -%>
-  <%= hidden_field_tag :switch_locale, @current_locale %>
-
+  <%= render '/refinery/admin/locale_picker',
+              :current_locale => Globalize.locale %>
+              
   <%= render "/refinery/admin/error_messages", :object => @phrase, :include_object_name => true %>
 
   <%= render '/refinery/copywriting/admin/phrases/value_field', :f => f %>
