@@ -5,7 +5,7 @@
   <% when "text" %>
     <%= f.text_area :value, :value => value, :rows => 12, :class => 'widest' -%>
   <% when "wysiwyg" %>
-    <%= f.text_area :value, :value => value, :rows => 5, :class => 'widest wymeditor' -%>
+    <%= f.text_area :value, :value => value, :rows => 5, :class => 'widest wymeditor wysiwyg' -%>
   <% else %>
     <%= f.text_field :value, :value => value, :class => 'widest larger' -%>
   <% end %>
